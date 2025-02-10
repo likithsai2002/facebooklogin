@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Signup Form</title>
+    <style>
+        label{
+            text-align: left;
+            display: block;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #aed0f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 550px;
+            text-align: center;
+        }
+
+        .signup-container h1 {
+            color: #1877f2;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .signup-container p {
+            color: #606770;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"],
+        .signup-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .gender-container {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .gender-container label {
+            margin-right: 10px;
+        }
+        #pronounContainer{
+            display: none;
+        }
+
+        .signup-container button {
+            width: 100%;
+            background-color: #42b72a;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-container button:hover {
+            background-color: #36a420;
+        }
+
+        .signup-container a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="signup-container">
+        <h1>facebook</h1>
+        <h2>Create a new account</h2>
+         <p>It's quick and easy.</p>
+        <form id="signupForm" onsubmit="return validateForm()">
+            <input type="text" id1="firstName" placeholder="First name" required>
+            <input type="text" id="surname" placeholder="Surname" required>
+            <label for="dob">Date of Birth</label> 
+            <div style="display: flex; justify-content: space-between;">
+                <select id="day" required>
+                    <option value="">Day</option>
+                    <!-- Days 1 to 31 -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+                <select id="month" required>
+                    <option value="">Month</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                </select>
+                <select id="year" required>
+                    <option value="">Year</option>
+                    <script>
+                        for (let i = 2025; i >= 1900; i--) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+            <label for="dob">Gender </label>
+            <div class="gender-container">
+                <label><input type="radio" name="gender" value="Female" required> Female</label>
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+                <label><input type="radio" name="gender" value="Custom"> Custom</label>
+            </div>
+
+            <div id="pronounContainer">
+            
+                <select id="pronoun">
+                    <option value="">Select your pronoun</option>
+                    <option value="she">She: "Wish her a happy birthday!"</option>
+                    <option value="he">He: "Wish him a happy birthday!"</option>
+                    <option value="they">They: "Wish them a happy birthday!"</option>
+                </select>
+            </div>
+            <div id="customGenderContainer" style="display: none;">
+    
+    <input type="text" id="customGenderInput" placeholder="Enter your gender">
+</div>
+
+            <input type="email" id="email" placeholder="Mobile number or email address" required>
+            <input type="password" id="password" placeholder="New password" required>
+            <p>People who use our service may have uploaded your contact information to Facebook.<a href="#">Learn more</a></p>
+            <p>By clicking Sign Up. you agree to our <a href="#">Terms, Privacy Policy </a>and<a href="#"> Cookies Policy</a> You may recive SMS notification from us and can opt out at any time.</p>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>
+            <a href="#">Already have an account?</a>
+        </p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const genderInputs = document.querySelectorAll('input[name="gender"]');
+    const pronounContainer = document.getElementById("pronounContainer");
+    const customGenderContainer = document.getElementById("customGenderContainer");
+
+    genderInputs.forEach(input => {
+        input.addEventListener("change", function () {
+            if (this.value === "Custom") {
+                pronounContainer.style.display = "block"; 
+                customGenderContainer.style.display = "block"; 
+            } else {
+                pronounContainer.style.display = "none"; 
+                customGenderContainer.style.display = "none"; 
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
